@@ -1,8 +1,17 @@
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,adsetess,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,swireframeg,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
 
+/*
+          BEST VIEWED IN FULL SCREEN :
+
+   ==========================================
+   http://codepen.io/juliangarnier/full/BsIih
+   ==========================================
+
+*/
+
 @import url(http://fonts.googleapis.com/css?family=Lato:400,900);
 
-* { box-sizing: border-box; tap-highlight-color:rgba(0,0,0,0); }
+* { box-sizing: border-box; -webkit-tap-highlight-color:rgba(0,0,0,0); }
 
 body { 
   position: absolute;
@@ -15,11 +24,11 @@ body {
 }
 
 button { 
-  font-family: 'Lato', avenir, sans-serif;
+  font-family: avenir, 'Lato', sans-serif;
   font-weight: 400;
 }
 
-body:not(.animated) *:not(#panes) { transition: all 0s linear; }
+body:not(.animated) *:not(#panes) { -webkit-transition: all 0s linear; }
 
 #app {
   position: absolute;
@@ -37,7 +46,7 @@ body:not(.animated) *:not(#panes) { transition: all 0s linear; }
   position: absolute;
   left: 50%;
   top: 50%;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 #app[data-frame="off"] #board,
@@ -57,16 +66,16 @@ body:not(.animated) *:not(#panes) { transition: all 0s linear; }
   width: 9.5em;
   height: 9.5em;
   margin: -4.75em 0 0 -4.75em;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 #container {
   z-index: 1;
-  perspective: 800px;
-  transform: translateZ( -9999px );
+  -webkit-perspective: 800px;
+  -webkit-transform: translateZ( -9999px );
 }
 
-#app[data-state="game"] #container { transform: inherit; }
+#app[data-state="game"] #container { -webkit-transform: inherit; }
 
 #scene { 
   position: absolute;
@@ -75,16 +84,16 @@ body:not(.animated) *:not(#panes) { transition: all 0s linear; }
   width: 16em;
   height: 16em;
   margin: -8em 0 0 -8em;
-  transform-style: preserve-3d;
-  transform: rotateX( 90deg ) rotateZ( 90deg );
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: rotateX( 90deg ) rotateZ( 90deg );
 }
 
-.sphere { transform: rotateZ( -90deg ) rotateX( -90deg ); }
+.sphere { -webkit-transform: rotateZ( -90deg ) rotateX( -90deg ); }
 
-#scene, .sphere { transition: transform 2s ease-in-out; }
+#scene, .sphere { -webkit-transition: -webkit-transform 2s ease-in-out; }
 
 #app[data-state="game"] #scene,
-#app[data-state="game"] .sphere { transition-delay: .2s; }
+#app[data-state="game"] .sphere { -webkit-transition-delay: .2s; }
 
 #pieces {
   visibility: hidden;
@@ -95,7 +104,7 @@ body:not(.animated) *:not(#panes) { transition: all 0s linear; }
 
 #board {
   z-index: 0;
-  transform: translateZ(.3em);
+  -webkit-transform: translateZ(.3em);
 }
 
 #board:after, #frame:after, #frame:before { 
@@ -103,32 +112,32 @@ body:not(.animated) *:not(#panes) { transition: all 0s linear; }
   content: "";
   width: 100%;
   height: .3em;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   box-sizing: border-box;
 }
 
 #frame {
   z-index: -1;
-  transform-style: preserve-3d;
-  transform: translateZ(.02em) rotateZ(90deg);
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: translateZ(.02em) rotateZ(90deg);
   box-shadow: 0 0 .25em .1em rgba(0,0,0,.5);
 }
 
-#app[data-frame="on"] #board:after    { transform: rotateX(90deg) translateZ(8.75em) translateY(-0.3em);
-                                        transform-origin: 0 0; }
-#app[data-frame="on"] #frame:after    { transform: rotateX(90deg) rotateY(90deg) translateX(9.5em) translateY(-0.02em);
-                                        transform-origin: 100% 0; }
-#app[data-frame="on"] #frame:before   { transform: rotateX(90deg) rotateY(0deg) translateX(0em) translateY(-0.02em);
-                                        transform-origin: 100% 0; }
+#app[data-frame="on"] #board:after    { -webkit-transform: rotateX(90deg) translateZ(8.75em) translateY(-0.3em);
+                                        -webkit-transform-origin: 0 0; }
+#app[data-frame="on"] #frame:after    { -webkit-transform: rotateX(90deg) rotateY(90deg) translateX(9.5em) translateY(-0.02em);
+                                        -webkit-transform-origin: 100% 0; }
+#app[data-frame="on"] #frame:before   { -webkit-transform: rotateX(90deg) rotateY(0deg) translateX(0em) translateY(-0.02em);
+                                        -webkit-transform-origin: 100% 0; }
 
 #app[data-frame="off"] th             { display: none; }
 
-#app[data-frame="off"] #board:after   { transform: rotateX(90deg) translateZ(8em) translateY(-0.3em);
-                                        transform-origin: 0 0; }
-#app[data-frame="off"] #frame:after   { transform: rotateX(90deg) rotateY(90deg) translateX(8em) translateY(-0.02em);
-                                        transform-origin: 100% 0; }
-#app[data-frame="off"] #frame:before  { transform: rotateX(90deg) rotateY(0deg) translateX(0em) translateY(-0.02em);
-                                        transform-origin: 100% 0; }
+#app[data-frame="off"] #board:after   { -webkit-transform: rotateX(90deg) translateZ(8em) translateY(-0.3em);
+                                        -webkit-transform-origin: 0 0; }
+#app[data-frame="off"] #frame:after   { -webkit-transform: rotateX(90deg) rotateY(90deg) translateX(8em) translateY(-0.02em);
+                                        -webkit-transform-origin: 100% 0; }
+#app[data-frame="off"] #frame:before  { -webkit-transform: rotateX(90deg) rotateY(0deg) translateX(0em) translateY(-0.02em);
+                                        -webkit-transform-origin: 100% 0; }
 
 th, td {
   position: relative;
@@ -152,12 +161,12 @@ table span {
   height: 100%;
   font-size: .26em; 
   color: rgba(255,255,255,.75); 
-  transform: translateZ(1px);
+  -webkit-transform: translateZ(1px);
 }
 
 thead span, tbody th:last-child span{
-  transform: rotateZ(180deg) translateZ(1px);
-  transform-origin: center;
+  -webkit-transform: rotateZ(180deg) translateZ(1px);
+  -webkit-transform-origin: center;
 }
 
 thead span, tfoot span { line-height: 3.9em; }
@@ -180,14 +189,14 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
 
 #w-jail { 
   bottom: 1em;
-  transform-style: preserve-3d;
-  transform: rotateZ(0deg) translateZ(2px);
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: rotateZ(0deg) translateZ(2px);
 }
 
 #b-jail { 
   top: 1em;
-  transform-style: preserve-3d;
-  transform: rotateZ(180deg) translateZ(2px);
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform: rotateZ(180deg) translateZ(2px);
 }
 
 .jail .piece{
@@ -199,8 +208,8 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   box-shadow: inset 10em 10em 1em rgba(0, 0, 0, .3);
 }
 
-#b-jail .piece { transform-origin: center; transform: rotateZ(180deg); }
-#w-jail .piece { transform-origin: center; transform: rotateZ(0deg);}
+#b-jail .piece { -webkit-transform-origin: center; -webkit-transform: rotateZ(180deg); }
+#w-jail .piece { -webkit-transform-origin: center; -webkit-transform: rotateZ(0deg);}
 
 @media screen and (min-width: 56em) { 
 
@@ -210,11 +219,11 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   #app[data-frame="on"] #w-jail { bottom: 6.9em;    margin-left: 2em; }
   #app[data-frame="on"] #b-jail { top: 6.9em;       margin-left: -10em; }
 
-  #b-jail { transform: rotateZ(90deg) translateZ(2px); }
-  #w-jail { transform: rotateZ(-90deg) translateZ(2px); }
+  #b-jail { -webkit-transform: rotateZ(90deg) translateZ(2px); }
+  #w-jail { -webkit-transform: rotateZ(-90deg) translateZ(2px); }
 
-  #b-jail .piece { transform: rotateZ(-90deg); }
-  #w-jail .piece { transform: rotateZ(90deg); }
+  #b-jail .piece { -webkit-transform: rotateZ(-90deg); }
+  #w-jail .piece { -webkit-transform: rotateZ(90deg); }
 
 }
 
@@ -224,9 +233,9 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   position: absolute;
   width: 1em;
   height: 1em;
-  transform-style: preserve-3d;
-  transform-origin: 4em;
-  transform: translateZ( 2px );
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform-origin: 4em;
+  -webkit-transform: translateZ( 2px );
 }
 
 .piece,
@@ -234,7 +243,7 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
 .poly .face,  
 .poly-group:first-child, 
 .bishop .poly-group:nth-child(2) {
-  transition: transform .2s linear;
+  -webkit-transition: -webkit-transform .2s linear;
 }
 
 .piece:active {
@@ -244,7 +253,7 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
 }
 
 .piece.grabbed {
-  transition: all 0s linear;
+  -webkit-transition: all 0s linear;
   z-index: 9999;
 }
 
@@ -253,7 +262,7 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   left: 50%;
   top: 50%;
   font-size: 10%;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .poly-group:first-child {
@@ -267,7 +276,7 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
 }
 
 .piece:active .poly, .piece.grabbed .poly{
-  transform: translateZ( 10em );
+  -webkit-transform: translateZ( 10em );
 }
 
 .piece.grabbed .poly-group:first-child {
@@ -282,12 +291,12 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
 
 .poly {
   position: absolute;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .poly .face {
   position: absolute;
-  transform-origin: 0 0;
+  -webkit-transform-origin: 0 0;
 }
 
 .valid:before,
@@ -306,9 +315,9 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   top: 50%;
   left: 50%;
   border-radius: 50%;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   -moz-box-sizing: border-box; box-sizing: border-box; box-sizing: border-box;
-  transform: translateZ( 1px );
+  -webkit-transform: translateZ( 1px );
 }
 
 .valid:before, .current:before { 
@@ -376,31 +385,31 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
 .small-cube .tp {
   width: 4em;
   height: 4em;
-  transform: translateZ( 4em );
+  -webkit-transform: translateZ( 4em );
 }
 
 .small-cube .ft  {
   width: 4em;
   height: 4em;
-  transform: rotateX(90deg) translateZ(-4em);
+  -webkit-transform: rotateX(90deg) translateZ(-4em);
 }
 
 .small-cube .bk   {
   width: 4em;
   height: 4em;
-  transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
 }
 
 .small-cube .rt {
   width: 4em;
   height: 4em;
-  transform: rotateY(90deg) translateX(-4em);
+  -webkit-transform: rotateY(90deg) translateX(-4em);
 }
 
 .small-cube .lt {
   width: 4em;
   height: 4em;
-  transform: rotateY(90deg) translateX(-4em) translateZ(4em);
+  -webkit-transform: rotateY(90deg) translateX(-4em) translateZ(4em);
 }
 
 /* ---------------------------------------------------------------------------------------------------- rook / queen and king bodies */ 
@@ -419,31 +428,31 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
 .big-cube .tp {
   width: 6em;
   height: 6em;
-  transform: translateZ( 6em );
+  -webkit-transform: translateZ( 6em );
 }
 
 .big-cube .ft  {
   width: 6em;
   height: 6em;
-  transform: rotateX(90deg) translateZ(-6em);
+  -webkit-transform: rotateX(90deg) translateZ(-6em);
 }
 
 .big-cube .bk   {
   width: 6em;
   height: 6em;
-  transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
 }
 
 .big-cube .rt {
   width: 6em;
   height: 6em;
-  transform: rotateY(90deg) translateX(-6em);
+  -webkit-transform: rotateY(90deg) translateX(-6em);
 }
 
 .big-cube .lt {
   width: 6em;
   height: 6em;
-  transform: rotateY(90deg) translateX(-6em) translateZ(6em);
+  -webkit-transform: rotateY(90deg) translateX(-6em) translateZ(6em);
 }
 
 /* ---------------------------------------------------------------------------------------------------- knight */ 
@@ -454,7 +463,7 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   margin: -3em 0 0 -3em;
 }
 
-.knight .poly-group.top { transform: translateZ( 3em ) rotateZ( 180deg ); }
+.knight .poly-group.top { -webkit-transform: translateZ( 3em ) rotateZ( 180deg ); }
 
 .knight .poly.a { margin: 0; }
 .knight .poly.b { margin: 3em 0 0 0; }
@@ -463,32 +472,32 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
 .knight .tp {
   width: 3em;
   height: 3em;
-  transform: translateZ( 3em );
+  -webkit-transform: translateZ( 3em );
 }
 .knight .bm {
   width: 8em;
   height: 8em;
-  transform: translateZ( 0em );
+  -webkit-transform: translateZ( 0em );
 }
 .knight .ft  {
   width: 3em;
   height: 3em;
-  transform: rotateX(90deg) translateZ(-3em);
+  -webkit-transform: rotateX(90deg) translateZ(-3em);
 }
 .knight .bk   {
   width: 3em;
   height: 3em;
-  transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg);
 }
 .knight .rt {
   width: 3em;
   height: 3em;
-  transform: rotateY(90deg) translateX(-3em);
+  -webkit-transform: rotateY(90deg) translateX(-3em);
 }
 .knight .lt {
   width: 3em;
   height: 3em;
-  transform: rotateY(90deg) translateX(-3em) translateZ(3em);
+  -webkit-transform: rotateY(90deg) translateX(-3em) translateZ(3em);
 }
 
 .knight .poly.a .rt { height: 6em; }
@@ -505,26 +514,26 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   margin: -3.3em 0 0 -1em;
 }
 
-.bishop .rectangle.a { transform: rotateZ( 45deg ); }
-.bishop .rectangle.b { transform: rotateZ( -45deg ); }
+.bishop .rectangle.a { -webkit-transform: rotateZ( 45deg ); }
+.bishop .rectangle.b { -webkit-transform: rotateZ( -45deg ); }
 
 .bishop .rectangle.a .tp {
   position: relative;
   width: 2em;
   height: 6.6em;
-  transform: translateZ(6em);
+  -webkit-transform: translateZ(6em);
 }
 
 .bishop .rectangle.a .rt {
   width: 6em;
   height: 6.6em;
-  transform: rotateY(90deg) translateX(-6em) translateZ(0em);
+  -webkit-transform: rotateY(90deg) translateX(-6em) translateZ(0em);
 }
 
 .bishop .rectangle.a .lt {
   width: 6em;
   height: 6.6em;
-  transform: rotateY(90deg) translateX(-6em) translateZ(2em);
+  -webkit-transform: rotateY(90deg) translateX(-6em) translateZ(2em);
 }
 
 .bishop .rectangle.a .tp:before, .bishop .rectangle.b .tp:before {
@@ -555,27 +564,27 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   position: relative;
   width: 2em;
   height: 2.3em;
-  transform: translateZ(6em);
+  -webkit-transform: translateZ(6em);
 }
 
 .bishop .rectangle.b .rt {
   width: 6em;
   height: 2.3em;
-  transform: rotateY(90deg) translateX(-6em);
+  -webkit-transform: rotateY(90deg) translateX(-6em);
 }
 
 .bishop .rectangle.b .lt {
   width: 6em;
   height: 2.3em;
-  transform: rotateY(90deg) translateX(-6em) translateZ(2em);
+  -webkit-transform: rotateY(90deg) translateX(-6em) translateZ(2em);
 }
 
-.bishop .rectangle.b.prim .tp { transform: translateZ(6em) translateY(4.3em); }
-.bishop .rectangle.b.prim .rt { transform: rotateY(90deg) translateX(-6em) translateY(4.3em); }
-.bishop .rectangle.b.prim .lt { transform: rotateY(90deg) translateX(-6em) translateZ(2em) translateY(4.3em); }
+.bishop .rectangle.b.prim .tp { -webkit-transform: translateZ(6em) translateY(4.3em); }
+.bishop .rectangle.b.prim .rt { -webkit-transform: rotateY(90deg) translateX(-6em) translateY(4.3em); }
+.bishop .rectangle.b.prim .lt { -webkit-transform: rotateY(90deg) translateX(-6em) translateZ(2em) translateY(4.3em); }
 
-.bishop .corners.a { transform: rotateZ( 0deg ); }
-.bishop .corners.b { transform: rotateZ( 180deg ); }
+.bishop .corners.a { -webkit-transform: rotateZ( 0deg ); }
+.bishop .corners.b { -webkit-transform: rotateZ( 180deg ); }
 
 .bishop .big-cube { margin: -3em 0 0 -3em; }
 .bishop .big-cube .ft { width: 1.5em; }
@@ -593,7 +602,7 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   margin: -3em 0 0 -3em;
 }
 
-.queen .top { transform: translateZ(8.5em); }
+.queen .top { -webkit-transform: translateZ(8.5em); }
 
 .queen .bottom .tp:before {
   content: '';
@@ -605,7 +614,7 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   margin: -.5em 0 0 -.5em;
   background: rgba(0,0,0,.6);
   border-radius: 50%;
-  transform: rotateX( -35.3deg ) rotateY(0deg);
+  -webkit-transform: rotateX( -35.3deg ) rotateY(0deg);
   box-shadow: 0 0 1em 2em rgba(0,0,0,.6);
 }
 
@@ -616,7 +625,7 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   height: 5em;
   margin: -2.5em 0 0 -2.5em;
   border-radius: 50%;
-  transform-origin: 2.5em 2.5em;
+  -webkit-transform-origin: 2.5em 2.5em;
 }
 
 /* ---------------------------------------------------------------------------------------------------- king */ 
@@ -627,18 +636,18 @@ tbody span { line-height: 4.5em; padding-right: 0.3em; }
   margin: -3em 0 0 -3em;
 }
 
-.king .top { transform: rotateZ(-45deg) translateZ(6em); }
+.king .top { -webkit-transform: rotateZ(-45deg) translateZ(6em); }
 
 .king .top .small-cube { margin: -2em 0 0 -2em; }
 
 /* ---------------------------------------------------------------------------------------------------- pieces initial positions */
 
-#p { transform: translateX( -1em ) translateY( 7em ); }
-#r { transform: translateX( -1em ) translateY( 6em ); }
-#n { transform: translateX( -1em ) translateY( 5em ); }
-#b { transform: translateX( -1em ) translateY( 4em ); }
-#q { transform: translateX( -1em ) translateY( 3em ); }
-#k { transform: translateX( -1em ) translateY( 2em ); }
+#p { -webkit-transform: translateX( -1em ) translateY( 7em ); }
+#r { -webkit-transform: translateX( -1em ) translateY( 6em ); }
+#n { -webkit-transform: translateX( -1em ) translateY( 5em ); }
+#b { -webkit-transform: translateX( -1em ) translateY( 4em ); }
+#q { -webkit-transform: translateX( -1em ) translateY( 3em ); }
+#k { -webkit-transform: translateX( -1em ) translateY( 2em ); }
 
 /* ------------------------------------------------------- UI elements */
 
@@ -670,15 +679,15 @@ h2 {
   width: 24em;
   height: 9em;
   margin: 0 0 0 -12em;
-  transition-delay: 0;
-  transition: all 1.5s ease-in-out;
-  transform: translateY(-24em) translateZ(99999px);
+  -webkit-transition-delay: 0;
+  -webkit-transition: all 1.5s ease-in-out;
+  -webkit-transform: translateY(-24em) translateZ(99999px);
 }
 
 #app[data-state="menu"] #menu {
   opacity: 1;
-  transition-delay: 1.5s;
-  transform: translateY(0em) translateZ(99999px);
+  -webkit-transition-delay: 1.5s;
+  -webkit-transform: translateY(0em) translateZ(99999px);
 }
 
 #logoimg {
@@ -695,13 +704,13 @@ h2 {
   margin-left: -10em;
   margin-top: -4em;
   font-size: 16px;
-  transform: translateZ(9999px);
-  perspective: 800;
-  transition: top 1.5s ease-in-out;
+  -webkit-transform: translateZ(9999px);
+  -webkit-perspective: 800;
+  -webkit-transition: top 1.5s ease-in-out;
 }
 
 #app[data-state="game"] #logo {
-  transform: translateZ(-9999px) translateY(-40em);
+  -webkit-transform: translateZ(9999px) translateY(-40em);
 }
 
 .symbol {
@@ -709,48 +718,48 @@ h2 {
   float: left;
   width: 4em;
   height: 4em;
-  transition : transform 2s linear;
-  transform-style : preserve-3d;
-  transform-origin : 2em 2em;
-  transition: all 1.5s ease-in-out;
-  animation : fall 2s 1 ease-in-out;
+  -webkit-transition: -webkit-transform 2s linear;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transform-origin: 2em 2em;
+  -webkit-transition: all 1.5s ease-in-out;
+  -webkit-animation: fall 2s 1 ease-in-out;
 }
 
 .loading .symbol { 
   top: 0;
-  animation : rotateX 2s 1 ease-in-out;
+  -webkit-animation: rotateX 2s 1 ease-in-out;
 }
 
-.symbol:nth-child(1) { z-index: 1; animation-delay: 400ms; }
-.symbol:nth-child(2) { z-index: 2; animation-delay: 500ms; }
-.symbol:nth-child(3) { z-index: 3; animation-delay: 600ms; }
-.symbol:nth-child(4) { z-index: 2; animation-delay: 700ms; }
-.symbol:nth-child(5) { z-index: 1; animation-delay: 800ms; }
+.symbol:nth-child(1) { z-index: 1; -webkit-animation-delay: 400ms; }
+.symbol:nth-child(2) { z-index: 2; -webkit-animation-delay: 500ms; }
+.symbol:nth-child(3) { z-index: 3; -webkit-animation-delay: 600ms; }
+.symbol:nth-child(4) { z-index: 2; -webkit-animation-delay: 700ms; }
+.symbol:nth-child(5) { z-index: 1; -webkit-animation-delay: 800ms; }
 
-@keyframes rotateX {
-  0%   { transform: rotateX(0deg); }
-  100% { transform: rotateX(360deg); }
+@-webkit-keyframes rotateX {
+  0%   { -webkit-transform: rotateX(0deg); }
+  100% { -webkit-transform: rotateX(360deg); }
 }
 
-@keyframes fall {
-  0%   { transform: rotateX(0deg) translateY(0em); opacity: 1; }
-  100% { transform: rotateX(120deg) translateY(60em); opacity: 0; }
+@-webkit-keyframes fall {
+  0%   { -webkit-transform: rotateX(0deg) translateY(0em); opacity: 1; }
+  100% { -webkit-transform: rotateX(120deg) translateY(60em); opacity: 0; }
 }
 
 .symbol > div {
   position: absolute;
   width: 4em;
   height: 4em;
-  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   background-color : white;
 }
 
-.symbol div:nth-child(1) { transform : translateZ(2em); }
-.symbol div:nth-child(2) { transform : rotateY(90deg) translateZ(2em); background-color : #A0A0A0; }
-.symbol div:nth-child(3) { transform : rotateY(180deg) translateZ(2em); background-color : #D0D0D0; }
-.symbol div:nth-child(4) { transform : rotateY(-90deg) translateZ(2em); background-color : #A0A0A0; }
-.symbol div:nth-child(5) { transform : rotateX(-90deg) translateZ(2em) rotate(180deg); background-color: #E0E0E0; }
-.symbol div:nth-child(6) { transform : rotateX(90deg) translateZ(2em); background-color : #C0C0C0; }
+.symbol div:nth-child(1) { -webkit-transform: translateZ(2em); }
+.symbol div:nth-child(2) { -webkit-transform: rotateY(90deg) translateZ(2em); background-color : #A0A0A0; }
+.symbol div:nth-child(3) { -webkit-transform: rotateY(180deg) translateZ(2em); background-color : #D0D0D0; }
+.symbol div:nth-child(4) { -webkit-transform: rotateY(-90deg) translateZ(2em); background-color : #A0A0A0; }
+.symbol div:nth-child(5) { -webkit-transform: rotateX(-90deg) translateZ(2em) rotate(180deg); background-color: #E0E0E0; }
+.symbol div:nth-child(6) { -webkit-transform: rotateX(90deg) translateZ(2em); background-color : #C0C0C0; }
 
 .symbol > div:first-child {
   background-color: #101010;
@@ -768,7 +777,7 @@ h2 {
   left: .55em;
   width: 2.45em;
   height: 2.45em;
-  transform: rotateZ(45deg);
+  -webkit-transform: rotateZ(45deg);
   background-color: white;
 }
 
@@ -797,7 +806,7 @@ h2 {
 
 .symbol:nth-child(3) > div:first-child:before {
   top: -1em;
-  transform: rotateZ(45deg);
+  -webkit-transform: rotateZ(45deg);
 }
 
 .symbol:nth-child(3) > div:first-child:after {
@@ -815,7 +824,7 @@ h2 {
 
 #panes {
   width: 72em;
-  transition: transform .75s ease-in-out;
+  -webkit-transition: -webkit-transform .75s ease-in-out;
 }
 
 .pane {
@@ -824,16 +833,16 @@ h2 {
   height: 8em;
   position: absolute;
   background-color: transparent;
-  transition: opacity .45s ease-in-out!important;
+  -webkit-transition: opacity .45s ease-in-out!important;
 }
 
-.pane:nth-child(1) { transform: translateX(-80em); }
-.pane:nth-child(2) { transform: translateX(0em); }
-.pane:nth-child(3) { transform: translateX(80em); }
+.pane:nth-child(1) { -webkit-transform: translateX(-80em); }
+.pane:nth-child(2) { -webkit-transform: translateX(0em); }
+.pane:nth-child(3) { -webkit-transform: translateX(80em); }
 
-#app[data-menu="themes"] #panes { transform: translateX(80em); }
-#app[data-menu="main"] #panes   { transform: translateX(0em); }
-#app[data-menu="about"] #panes { transform: translateX(-80em); }
+#app[data-menu="themes"] #panes { -webkit-transform: translateX(80em); }
+#app[data-menu="main"] #panes   { -webkit-transform: translateX(0em); }
+#app[data-menu="about"] #panes { -webkit-transform: translateX(-80em); }
 
 #app[data-menu="main"] #main,
 #app[data-menu="themes"] #themes,
@@ -848,15 +857,15 @@ h2 {
   max-width: 46em;
   height: 2em;
   margin: 0 auto;
-  transform: translateY(-3em);
-  transition: all 1.5s ease-in-out;
-  transition-delay: 0s;
+  -webkit-transform: translateY(-3em);
+  -webkit-transition: all 1.5s ease-in-out;
+  -webkit-transition-delay: 0s;
 }
 
 #app[data-state="game"] #top-bar {
   opacity: 1;
-  transform: translateY(1em);
-  transition-delay: 1s;
+  -webkit-transform: translateY(1em);
+  -webkit-transition-delay: 1s;
 }
 
 .btn {
@@ -871,8 +880,8 @@ h2 {
   text-decoration: none;
   text-transform: uppercase;
   background-color: #303030;
-  transform: translateZ(1em);
-  transition: background-color .1s ease-out!important;
+  -webkit-transform: translateZ(1em);
+  -webkit-transition: background-color .1s ease-out!important;
 }
 
 .btn.white {
@@ -923,7 +932,7 @@ h2 {
   width: 20px;
   height: 16px;
   display: inline-block;
-  background-image: url("../img/icons.png");
+  background-image: url("https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/icons.png");
   background-repeat: no-repeat;
   background-size: 40px 16px;
 }
@@ -933,7 +942,7 @@ h2 {
 #menu .switch {
   line-height: 2em;
   margin-right: 1em;
-  transition: none!important;
+  -webkit-transition: none!important;
 }
 
 #menu .switch:hover {
@@ -954,7 +963,7 @@ input[type=checkbox] + label:after {
   line-height: 2em;
   text-align: center;
   color: #FFF;
-  transition: none!important;
+  -webkit-transition: none!important;
 }
 
 input[type=checkbox]:checked + label:after {
@@ -984,7 +993,7 @@ input[type=checkbox]:hover + label:after {
 
 .set-theme:hover { cursor: pointer; background: rgba(255,255,255,.3); }
 .set-theme:hover .cube, 
-.set-theme:active .cube { transform: rotateX(146deg) rotateY(45deg) translateY(0.1em) translateX(3em); }
+.set-theme:active .cube { -webkit-transform: rotateX(146deg) rotateY(45deg) translateY(0.1em) translateX(3em); }
 #app[data-theme="classic"] .set-theme[data-theme="classic"],
 #app[data-theme="marble"] .set-theme[data-theme="marble"],
 #app[data-theme="flat"] .set-theme[data-theme="flat"],
@@ -1000,7 +1009,7 @@ input[type=checkbox]:hover + label:after {
   height: 2em;
   background-color: #A0A0A0;
   background-size: 235%;
-  transition: transform .1s ease-in-out!important;
+  -webkit-transition: -webkit-transform .1s ease-in-out!important;
   box-sizing: border-box;
 }
 
@@ -1008,16 +1017,16 @@ input[type=checkbox]:hover + label:after {
   position: relative;
   margin-left: -2.15em;
   box-shadow: inset 0 0 0 3em rgba(0,0,0,.2);
-  transform: rotateX(156deg) rotateY(45deg) translateY(-.15em) translateX(3em);
-  transform-style: preserve-3d;
+  -webkit-transform: rotateX(156deg) rotateY(45deg) translateY(-.15em) translateX(3em);
+  -webkit-transform-style: preserve-3d;
 }
 
 .cube:before {
   position: absolute;
   left: 0;
   top: 2em;
-  transform: rotateX(90deg);
-  transform-origin: 0 0;
+  -webkit-transform: rotateX(90deg);
+  -webkit-transform-origin: 0 0;
 }
 
 .cube:after {
@@ -1025,8 +1034,8 @@ input[type=checkbox]:hover + label:after {
   left: 0;
   bottom: 0;
   box-shadow: inset 0 0 0 3em rgba(0,0,0,.5);
-  transform: rotateY(90deg);
-  transform-origin: 100% 0;
+  -webkit-transform: rotateY(90deg);
+  -webkit-transform-origin: 100% 0;
 }
 
 #overlay {
@@ -1038,13 +1047,13 @@ input[type=checkbox]:hover + label:after {
   height: 100%;
   background-color: black;
   opacity: 0;
-  transition: opacity 1.5s ease-in-out!important;
-  transform: translateZ(9999px);
+  -webkit-transition: opacity 1.5s ease-in-out!important;
+  -webkit-transform: translateZ(9999px);
 }
 
 .loading #overlay { 
   opacity: 1; 
-  background-image: url(../img/ajax-loader.gif);
+  background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/ajax-loader.gif);
   background-position: 50% 60%;
   background-repeat: no-repeat;
 }
@@ -1079,7 +1088,7 @@ tfoot th:last-child   { background-position: right bottom; background-size: 332%
 #app[data-theme="classic"]                                            { background-color: #E5E3DF; color: #303132; }
 #app[data-theme="classic"] a                                          { color: #404040; }
 #app[data-theme="classic"] #overlay                                   { background-color: #E5E3DF; }
-#app[data-theme="classic"] #scene                                     { background: radial-gradient(center, ellipse cover, #FFF 25%, #E5E3DF 72%); }
+#app[data-theme="classic"] #scene                                     { background: -webkit-radial-gradient(center, ellipse cover, #FFF 25%, #E5E3DF 72%); }
 #app[data-theme="classic"][data-frame="off"] #frame,
 #app[data-theme="classic"][data-frame="off"] #board:after, 
 #app[data-theme="classic"][data-frame="off"] #frame:after, 
@@ -1108,28 +1117,28 @@ tfoot th:last-child   { background-position: right bottom; background-size: 332%
 
 /* ---------------------------------------------------------------------------------------------------- classic textures */
 
-#app[data-theme="classic"] th                       { background-image: url(../img/classic-frame.png); }
+#app[data-theme="classic"] th                       { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-frame.png); }
 #app[data-theme="classic"][data-frame="off"] #board:after, 
 #app[data-theme="classic"][data-frame="off"] #frame:after, 
 #app[data-theme="classic"][data-frame="off"] #frame:before 
-                                                    { background-image: url(../img/classic-frame-border-off.png); }
+                                                    { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-frame-border-off.png); }
 #app[data-theme="classic"][data-frame="on"] #board:after, 
 #app[data-theme="classic"][data-frame="on"] #frame:after, 
 #app[data-theme="classic"][data-frame="on"] #frame:before  
-                                                    { background-image: url(../img/classic-frame-border.png); }
-#app[data-theme="classic"] .square                  { background-image: url(../img/classic-square-black.png) }
+                                                    { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-frame-border.png); }
+#app[data-theme="classic"] .square                  { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-square-black.png) }
 #app[data-theme="classic"] .white .poly > div,
 .set-theme[data-theme="classic"] .cube,
 .set-theme[data-theme="classic"] .cube:before,
-.set-theme[data-theme="classic"] .cube:after        { background-image: url(../img/classic-piece-white.png); }
-#app[data-theme="classic"] .black .poly > div       { background-image: url(../img/classic-piece-black.png); }
-#app[data-theme="classic"] .white .poly .sphere     { background-image: url(../img/classic-sphere-white.png); }
-#app[data-theme="classic"] .black .poly .sphere     { background-image: url(../img/classic-sphere-black.png); }
+.set-theme[data-theme="classic"] .cube:after        { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-piece-white.png); }
+#app[data-theme="classic"] .black .poly > div       { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-piece-black.png); }
+#app[data-theme="classic"] .white .poly .sphere     { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-sphere-white.png); }
+#app[data-theme="classic"] .black .poly .sphere     { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-sphere-black.png); }
 
 #app[data-theme="classic"] tbody tr:nth-child(odd)
                            .square:nth-child(even), 
 #app[data-theme="classic"] tbody tr:nth-child(even)
-                           .square:nth-child(odd)   { background-image: url(../img/classic-square-white.png); }
+                           .square:nth-child(odd)   { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-square-white.png); }
 
 /* ---------------------------------------------------------------------------------------------------- marble */
 
@@ -1162,35 +1171,35 @@ tfoot th:last-child   { background-position: right bottom; background-size: 332%
 
 /* ---------------------------------------------------------------------------------------------------- marble textures */
 
-#app[data-theme="marble"] #scene                    { background: url(../img/back.jpg) no-repeat center center black; background-size: cover;}
-#app[data-theme="marble"] th                        { background-image: url(../img/marble-frame.png); }
+#app[data-theme="marble"] #scene                    { background: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/back.jpg) no-repeat center center black; background-size: cover;}
+#app[data-theme="marble"] th                        { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-frame.png); }
 #app[data-theme="marble"][data-frame="off"] #board:after, 
 #app[data-theme="marble"][data-frame="off"] #frame:after, 
 #app[data-theme="marble"][data-frame="off"] #frame:before 
-                                                    { background-image: url(../img/marble-frame-border-off.png); }
+                                                    { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-frame-border-off.png); }
 #app[data-theme="marble"][data-frame="on"] #board:after, 
 #app[data-theme="marble"][data-frame="on"] #frame:after, 
 #app[data-theme="marble"][data-frame="on"] #frame:before  
-                                                    { background-image: url(../img/marble-frame-border.png); }
-#app[data-theme="marble"] .square                   { background-image: url(../img/marble-square-black.png) }
+                                                    { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-frame-border.png); }
+#app[data-theme="marble"] .square                   { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-square-black.png) }
 #app[data-theme="marble"] .white .poly > div,
 .set-theme[data-theme="marble"] .cube,
 .set-theme[data-theme="marble"] .cube:before,
-.set-theme[data-theme="marble"] .cube:after         { background-image: url(../img/marble-piece-white.png); }
-#app[data-theme="marble"] .black .poly > div        { background-image: url(../img/marble-piece-black.png); }
-#app[data-theme="marble"] .white .poly .sphere      { background-image: url(../img/marble-sphere-white.png); }
-#app[data-theme="marble"] .black .poly .sphere      { background-image: url(../img/marble-sphere-black.png); }
+.set-theme[data-theme="marble"] .cube:after         { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-piece-white.png); }
+#app[data-theme="marble"] .black .poly > div        { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-piece-black.png); }
+#app[data-theme="marble"] .white .poly .sphere      { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-sphere-white.png); }
+#app[data-theme="marble"] .black .poly .sphere      { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-sphere-black.png); }
 #app[data-theme="marble"] tbody tr:nth-child(odd)
                         .square:nth-child(even), 
 #app[data-theme="marble"] tbody tr:nth-child(even)
-                        .square:nth-child(odd)      { background-image: url(../img/marble-square-white.png); }
+                        .square:nth-child(odd)      { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-square-white.png); }
 
 /* ---------------------------------------------------------------------------------------------------- flat */
 
 #app[data-theme="flat"]                             { background-color: #E5E3DF; color: #303132; }
 #app[data-theme="flat"] a                           { color: #404040; }
 #app[data-theme="flat"] #overlay                    { background-color: #E5E3DF; }
-#app[data-theme="flat"] #scene                      { background: radial-gradient(center, ellipse cover, #FFF 25%, #E5E3DF 72%); }
+#app[data-theme="flat"] #scene                      { background: -webkit-radial-gradient(center, ellipse cover, #FFF 25%, #E5E3DF 72%); }
 #app[data-theme="flat"] #frame,
 #app[data-theme="flat"] #board:after, 
 #app[data-theme="flat"] #frame:after, 
@@ -1218,7 +1227,7 @@ tfoot th:last-child   { background-position: right bottom; background-size: 332%
 
 /* ---------------------------------------------------------------------------------------------------- wireframe */
 
-#app[data-theme="wireframe"] #scene                 { background: radial-gradient(center, ellipse cover, #1D414D 0%,#000000 70%); }
+#app[data-theme="wireframe"] #scene                 { background: -webkit-radial-gradient(center, ellipse cover, #1D414D 0%,#000000 70%); }
 #app[data-theme="wireframe"] th                     { background-color: rgba(17,41,48,.6) }
 #app[data-theme="wireframe"] #frame                 { background-color: #001B20; } 
 #app[data-theme="wireframe"] #board:after, 
