@@ -9,7 +9,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 */
 
-@import url(http://fonts.googleapis.com/css?family=Lato:400,900);
+@import url(lato.css);
 
 * { box-sizing: border-box; -webkit-tap-highlight-color:rgba(0,0,0,0); }
 
@@ -932,7 +932,7 @@ h2 {
   width: 20px;
   height: 16px;
   display: inline-block;
-  background-image: url("https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/icons.png");
+  background-image: url("img/icons.png");
   background-repeat: no-repeat;
   background-size: 40px 16px;
 }
@@ -1053,7 +1053,7 @@ input[type=checkbox]:hover + label:after {
 
 .loading #overlay { 
   opacity: 1; 
-  background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/ajax-loader.gif);
+  background-image: url(img/ajax-loader.gif);
   background-position: 50% 60%;
   background-repeat: no-repeat;
 }
@@ -1117,28 +1117,28 @@ tfoot th:last-child   { background-position: right bottom; background-size: 332%
 
 /* ---------------------------------------------------------------------------------------------------- classic textures */
 
-#app[data-theme="classic"] th                       { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-frame.png); }
+#app[data-theme="classic"] th                       { background-image: url(img/classic-frame.png); }
 #app[data-theme="classic"][data-frame="off"] #board:after, 
 #app[data-theme="classic"][data-frame="off"] #frame:after, 
 #app[data-theme="classic"][data-frame="off"] #frame:before 
-                                                    { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-frame-border-off.png); }
+                                                    { background-image: url(img/classic-frame-border-off.png); }
 #app[data-theme="classic"][data-frame="on"] #board:after, 
 #app[data-theme="classic"][data-frame="on"] #frame:after, 
 #app[data-theme="classic"][data-frame="on"] #frame:before  
-                                                    { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-frame-border.png); }
-#app[data-theme="classic"] .square                  { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-square-black.png) }
+                                                    { background-image: url(img/classic-frame-border.png); }
+#app[data-theme="classic"] .square                  { background-image: url(img/classic-square-black.png) }
 #app[data-theme="classic"] .white .poly > div,
 .set-theme[data-theme="classic"] .cube,
 .set-theme[data-theme="classic"] .cube:before,
-.set-theme[data-theme="classic"] .cube:after        { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-piece-white.png); }
-#app[data-theme="classic"] .black .poly > div       { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-piece-black.png); }
-#app[data-theme="classic"] .white .poly .sphere     { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-sphere-white.png); }
-#app[data-theme="classic"] .black .poly .sphere     { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-sphere-black.png); }
+.set-theme[data-theme="classic"] .cube:after        { background-image: url(img/classic-piece-white.png); }
+#app[data-theme="classic"] .black .poly > div       { background-image: url(img/classic-piece-black.png); }
+#app[data-theme="classic"] .white .poly .sphere     { background-image: url(img/classic-sphere-white.png); }
+#app[data-theme="classic"] .black .poly .sphere     { background-image: url(img/classic-sphere-black.png); }
 
 #app[data-theme="classic"] tbody tr:nth-child(odd)
                            .square:nth-child(even), 
 #app[data-theme="classic"] tbody tr:nth-child(even)
-                           .square:nth-child(odd)   { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/classic-square-white.png); }
+                           .square:nth-child(odd)   { background-image: url(img/classic-square-white.png); }
 
 /* ---------------------------------------------------------------------------------------------------- marble */
 
@@ -1171,28 +1171,28 @@ tfoot th:last-child   { background-position: right bottom; background-size: 332%
 
 /* ---------------------------------------------------------------------------------------------------- marble textures */
 
-#app[data-theme="marble"] #scene                    { background: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/back.jpg) no-repeat center center black; background-size: cover;}
-#app[data-theme="marble"] th                        { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-frame.png); }
+#app[data-theme="marble"] #scene                    { background: url(img/back.jpg) no-repeat center center black; background-size: cover;}
+#app[data-theme="marble"] th                        { background-image: url(img/marble-frame.png); }
 #app[data-theme="marble"][data-frame="off"] #board:after, 
 #app[data-theme="marble"][data-frame="off"] #frame:after, 
 #app[data-theme="marble"][data-frame="off"] #frame:before 
-                                                    { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-frame-border-off.png); }
+                                                    { background-image: url(img/marble-frame-border-off.png); }
 #app[data-theme="marble"][data-frame="on"] #board:after, 
 #app[data-theme="marble"][data-frame="on"] #frame:after, 
 #app[data-theme="marble"][data-frame="on"] #frame:before  
-                                                    { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-frame-border.png); }
-#app[data-theme="marble"] .square                   { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-square-black.png) }
+                                                    { background-image: url(img/marble-frame-border.png); }
+#app[data-theme="marble"] .square                   { background-image: url(img/marble-square-black.png) }
 #app[data-theme="marble"] .white .poly > div,
 .set-theme[data-theme="marble"] .cube,
 .set-theme[data-theme="marble"] .cube:before,
-.set-theme[data-theme="marble"] .cube:after         { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-piece-white.png); }
-#app[data-theme="marble"] .black .poly > div        { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-piece-black.png); }
-#app[data-theme="marble"] .white .poly .sphere      { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-sphere-white.png); }
-#app[data-theme="marble"] .black .poly .sphere      { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-sphere-black.png); }
+.set-theme[data-theme="marble"] .cube:after         { background-image: url(img/marble-piece-white.png); }
+#app[data-theme="marble"] .black .poly > div        { background-image: url(img/marble-piece-black.png); }
+#app[data-theme="marble"] .white .poly .sphere      { background-image: url(img/marble-sphere-white.png); }
+#app[data-theme="marble"] .black .poly .sphere      { background-image: url(img/marble-sphere-black.png); }
 #app[data-theme="marble"] tbody tr:nth-child(odd)
                         .square:nth-child(even), 
 #app[data-theme="marble"] tbody tr:nth-child(even)
-                        .square:nth-child(odd)      { background-image: url(https://raw.github.com/juliangarnier/3D-Hartwig-chess-set/master/img/marble-square-white.png); }
+                        .square:nth-child(odd)      { background-image: url(img/marble-square-white.png); }
 
 /* ---------------------------------------------------------------------------------------------------- flat */
 
